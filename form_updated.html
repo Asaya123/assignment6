@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Student Information Form</title>
+    <style>
+        body 
+        {
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            /*background-color:#0e1c4f;*/
+            background-image: url(formbg.webp);
+            background-size: 100% auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+            image-rendering: crisp-edges;
+            color: #0e1c4f;
+            margin: 0;
+            padding: 20px;
+        }
+        .css_for_form {
+            max-width: 600px;
+            margin: auto;
+            background: #f49523;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #336659;
+        }
+        label {
+            font-weight: bold;
+            color: #0e1c4f;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #336659;
+            border-radius: 5.4px;
+            background: #faecc3;
+        }
+        button {
+            width: 48%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5.4px;
+            cursor: pointer;
+        }
+        .submit {
+            background: #336659;
+            color: white;
+        }
+        .reset {
+            background: #FFA07A;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="css_for_form">
+        <h2>Student Information Form</h2>
+        <form id="studentForm">
+            <label>First Name</label>
+            <input type="text" name="first_name" required>
+            
+            <label>Last Name</label>
+            <input type="text" name="last_name" required>
+            
+            <label>Gender</label>
+            <select name="Gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+            
+            <label>Subject of Interest</label>
+            <input type="text" name="subject_interest" required>
+            
+            <label>Languages Known</label>
+            <input type="text" name="languages" required>
+            
+            <label>Date of Birth</label>
+            <input type="text" name="dob" placeholder="dd-mm-yyyy" required>
+            
+            <label>Contact No.</label>
+            <input type="text" name="contact_no" required>
+            
+            <label>Address</label>
+            <textarea name="address" required></textarea>
+            
+            <label>Pin Code</label>
+            <input type="text" name="pin_code" required>
+            
+            <label>State</label>
+            <input type="text" name="state" required>
+            
+            <label>Country</label>
+            <input type="text" name="country" required>
+            
+            <label>Academic Achievements</label>
+            <textarea name="achievements"></textarea>
+            
+            <label>Interests</label>
+            <textarea name="interests"></textarea>
+            
+            <label>Skills</label>
+            <textarea name="skills"></textarea>
+            
+            <button type="submit" class="submit">Submit</button>
+            <button type="reset" class="reset">Reset</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("studentForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let firstName = document.getElementsByName("first_name")[0].value.trim();
+            let lastName = document.getElementsByName("last_name")[0].value.trim();
+            let contactNo = document.getElementsByName("contact_no")[0].value.trim();
+            let pinCode = document.getElementsByName("pin_code")[0].value.trim();
+            
+            try {
+                if (!firstName || !lastName || !contactNo || !pinCode) {
+                    throw new Error("All fields are required.");
+                }
+
+                if (!isAlphabetOnly(firstName)) {
+                    throw new Error("First name should contain only alphabets.");
+                }
+
+                if (!isAlphabetOnly(lastName)) {
+                    throw new Error("Last name should contain only alphabets.");
+                }
+
+                if (!isValidNumber(contactNo)) {
+                    throw new Error("Contact number must be exactly 10 digits.");
+                }
+
+                if (!isValidPinCode(pinCode)) {
+                    throw new Error("Pincode must be exactly 6 digits.");
+                }
+                
+                alert("Form submitted successfully!");
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+
+        function isAlphabetOnly(text) {
+            for (let i = 0; i < text.length; i++) {
+                let char = text[i];
+                if (!(char >= 'A' && char <= 'Z') && !(char >= 'a' && char <= 'z')) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        function isValidNumber(number) {
+            return number.length === 10 && !isNaN(number);
+        }
+
+        function isValidPinCode(pin) {
+            return pin.length === 6 && !isNaN(pin);
+        }
+    </script>
+</body>
+</html>
