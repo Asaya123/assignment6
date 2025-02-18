@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="javascript1.js"></script>
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            /*background: linear-gradient(135deg, #2c3e50, #34495e);*/
+            background-image: url('bgimage1.jfif');
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            background-attachment: fixed; 
+            color: white;
+            overflow: hidden;
+        }
+        .calculator {
+            background-image: url(calculatorimg1.jfif);
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            width: 320px;
+            position: absolute;
+            cursor: grab;
+            top: 50%;
+            left: 25%;
+            transform: translate(-50%, -50%);
+        }
+        .display {
+            font-size: 2em;
+            width: 90%;
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #222;
+            border: none;
+            border-radius: 10px;
+            text-align: right;
+            color: white;
+            box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .button {
+            padding: 20px;
+            font-size: 1.5em;
+            border: none;
+            background-color: #7fffd4;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+        .button:hover {
+            background-color: #8eee88;
+            transform: scale(1.05);
+        }
+        .button:active {
+            background-color: #d0d0d0;
+        }
+        .button.operator {
+            background-color: #e6b925;
+        }
+        .button.operator:hover{
+            background-color: #f6dc89;
+            transform: scale(1.05);
+        }
+        .button.equals {
+            background-color: #90be6d;
+            grid-row: span 2;
+        }
+        .button.equals:hover{
+            background-color: #4dea26;
+            transform: scale(1.05);
+        }
+        .button.clear {
+            background-color: #f51919;
+            grid-column: span 2;
+        }
+        .button.clear:hover{
+            background-color:#f5196d ;
+            transform: scale(1.05);
+        }
+        .drag-handle {
+            width: 100%;
+            height: 20px;
+            background-color: #444;
+            cursor: grab;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body >
+    <div class="calculator" id="calculator">
+        <div class="drag-handle" id="drag-handle"></div>
+        <input type="text" class="display" id="given" disabled>
+        <div class="button-container">
+            <button class="button clear" onclick="clearScreen()">Clear</button>
+            <button class="button operator" onclick="addgiven('/')">/</button>
+            <button class="button operator" onclick="addgiven('*')">*</button>
+            <button class="button operator" onclick="addgiven('-')">-</button>
+            <button class="button" onclick="addgiven('7')">7</button>
+            <button class="button" onclick="addgiven('8')">8</button>
+            <button class="button" onclick="addgiven('9')">9</button>
+            <button class="button operator" onclick="addgiven('+')">+</button>
+            <button class="button" onclick="addgiven('4')">4</button>
+            <button class="button" onclick="addgiven('5')">5</button>
+            <button class="button" onclick="addgiven('6')">6</button>
+            <button class="button equals" onclick="calculate()">=</button>
+            <button class="button" onclick="addgiven('1')">1</button>
+            <button class="button" onclick="addgiven('2')">2</button>
+            <button class="button" onclick="addgiven('3')">3</button>
+            <button class="button" onclick="addgiven('0')">0</button>
+        </div>
+    </div>
+</body>
+</html>
