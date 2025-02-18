@@ -17,7 +17,7 @@ function calculate() {
         const ans1=temp();
         if(ans1==Infinity){
             ans.value='∞';
-            setTimeout(clearScreen, 2000);
+            setTimeout(clearScreen, 1800);
         }
         else{
             ans.value=ans1;
