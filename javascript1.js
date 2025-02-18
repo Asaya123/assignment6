@@ -24,5 +24,6 @@ function calculate() {
         }
     } catch (error) {
         ans.value = 'Error';
+            setTimeout(clearScreen, 1800);
     }
 }
